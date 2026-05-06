@@ -2,11 +2,13 @@ import React from 'react';
 
 const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
   return (
-    <div className="step-card">
+    // We dynamically apply step1, step2, or step3 to the outermost wrapper.
+    // This ensures Cypress finds the inputs AND buttons inside the correct step ID.
+    <div className="step-card" id={`step${currentStep}`}>
+      
       {/* Step 1: Customer Details */}
       {currentStep === 1 && (
-        // ADDED id="step1" HERE
-        <div id="step1" className="step-content"> 
+        <div className="step-content"> 
           <h2>Customer Details</h2>
           <div className="input-group">
             <label htmlFor="first_name">First Name:</label>
@@ -33,8 +35,7 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
 
       {/* Step 2: Car Details */}
       {currentStep === 2 && (
-        // ADDED id="step2" HERE
-        <div id="step2" className="step-content">
+        <div className="step-content">
           <h2>Car Details</h2>
           <div className="input-group">
             <label htmlFor="model">Car Model:</label>
@@ -61,8 +62,7 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
 
       {/* Step 3: Payment Information */}
       {currentStep === 3 && (
-        // ADDED id="step3" HERE
-        <div id="step3" className="step-content">
+        <div className="step-content">
           <h2>Payment Info</h2>
           <div className="input-group">
             <label htmlFor="card_info">Card Information:</label>
@@ -91,19 +91,22 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
       {/* Navigation Buttons */}
       <div className="button-group">
         {currentStep > 1 && (
-          <button type="button" className="btn-prev" onClick={prevStep}>
+          // Added id="prev"
+          <button type="button" id="prev" className="btn-prev" onClick={prevStep}>
             Previous
           </button>
         )}
         
         {currentStep < 3 && (
-          <button type="button" className="btn-next" onClick={nextStep}>
+           // Added id="next"
+          <button type="button" id="next" className="btn-next" onClick={nextStep}>
             Next
           </button>
         )}
 
         {currentStep === 3 && (
-          <button type="submit" className="btn-submit">
+           // Added id="submit"
+          <button type="submit" id="submit" className="btn-submit">
             Submit
           </button>
         )}
