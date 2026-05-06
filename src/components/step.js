@@ -1,112 +1,75 @@
-import React from 'react';
+import React from "react";
 
-const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
+function Step({
+  step,
+  formData,
+  errors,
+  handleChange,
+  nextStep,
+  prevStep,
+  handleSubmit,
+}) {
   return (
-    <div className="step-card">
-      {/* Step 1: Customer Details */}
-      {currentStep === 1 && (
-        <div className="step-content">
-          <h2>Customer Details</h2>
-          <div className="input-group">
-            <label htmlFor="first_name">First Name:</label>
-            <input 
-              type="text" 
-              id="first_name" 
-              value={formData.first_name} 
-              onChange={handleChange} 
-              required 
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="last_name">Last Name:</label>
-            <input 
-              type="text" 
-              id="last_name" 
-              value={formData.last_name} 
-              onChange={handleChange} 
-              required 
-            />
-          </div>
-        </div>
-      )}
+    <div className="app-container">
+      <div className="card">
 
-      {/* Step 2: Car Details */}
-      {currentStep === 2 && (
-        <div className="step-content">
-          <h2>Car Details</h2>
-          <div className="input-group">
-            <label htmlFor="model">Car Model:</label>
-            <input 
-              type="text" 
-              id="model" 
-              value={formData.model} 
-              onChange={handleChange} 
-              required 
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="car_price">Car Price:</label>
-            <input 
-              type="number" 
-              id="car_price" 
-              value={formData.car_price} 
-              onChange={handleChange} 
-              required 
-            />
-          </div>
-        </div>
-      )}
+        {step === 1 && (
+          <>
+            <h2>Customer Details</h2>
 
-      {/* Step 3: Payment Information */}
-      {currentStep === 3 && (
-        <div className="step-content">
-          <h2>Payment Info</h2>
-          <div className="input-group">
-            <label htmlFor="card_info">Card Information:</label>
-            <input 
-              type="text" 
-              id="card_info" 
-              value={formData.card_info} 
-              onChange={handleChange} 
-              required 
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="expiry_date">Expiry Date:</label>
-            <input 
-              type="text" 
-              id="expiry_date" 
-              value={formData.expiry_date} 
-              onChange={handleChange} 
-              placeholder="MM/YY"
-              required 
-            />
-          </div>
-        </div>
-      )}
+            <label>First Name:</label>
+            <input id="first_name" value={formData.first_name} onChange={handleChange} />
+            {errors.first_name && <p className="error">{errors.first_name}</p>}
 
-      {/* Navigation Buttons */}
-      <div className="button-group">
-        {currentStep > 1 && (
-          <button type="button" className="btn-prev" onClick={prevStep}>
-            Previous
-          </button>
-        )}
-        
-        {currentStep < 3 && (
-          <button type="button" className="btn-next" onClick={nextStep}>
-            Next
-          </button>
+            <label>Last Name:</label>
+            <input id="last_name" value={formData.last_name} onChange={handleChange} />
+            {errors.last_name && <p className="error">{errors.last_name}</p>}
+
+            <button className="btn" onClick={nextStep}>Next</button>
+          </>
         )}
 
-        {currentStep === 3 && (
-          <button type="submit" className="btn-submit">
-            Submit
-          </button>
+        {step === 2 && (
+          <>
+            <h2>Car Details</h2>
+
+            <label>Car Model:</label>
+            <input id="model" value={formData.model} onChange={handleChange} />
+            {errors.model && <p className="error">{errors.model}</p>}
+
+            <label>Car Price:</label>
+            <input id="car_price" value={formData.car_price} onChange={handleChange} />
+            {errors.car_price && <p className="error">{errors.car_price}</p>}
+
+            <div className="btn-group">
+              <button className="btn" onClick={prevStep}>Previous</button>
+              <button className="btn" onClick={nextStep}>Next</button>
+            </div>
+          </>
         )}
+
+        {step === 3 && (
+          <>
+            <h2>Payment Details</h2>
+
+            <label>Credit Card Number:</label>
+            <input id="card_info" value={formData.card_info} onChange={handleChange} />
+            {errors.card_info && <p className="error">{errors.card_info}</p>}
+
+            <label>Expiration Date:</label>
+            <input id="expiry_date" value={formData.expiry_date} onChange={handleChange} />
+            {errors.expiry_date && <p className="error">{errors.expiry_date}</p>}
+
+            <div className="btn-group">
+              <button className="btn" onClick={prevStep}>Previous</button>
+              <button className="btn" onClick={handleSubmit}>Submit</button>
+            </div>
+          </>
+        )}
+
       </div>
     </div>
   );
-};
+}
 
 export default Step;
