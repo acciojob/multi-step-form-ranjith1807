@@ -56,11 +56,8 @@ function App() {
   };
 
   const nextStep = () => {
-    if (validateStep()) {
-      setStep((prev) => prev + 1);
-    }
-  };
-
+  setStep((prev) => prev + 1);
+};
   const prevStep = () => setStep((prev) => prev - 1);
 
   const handleSubmit = () => {
