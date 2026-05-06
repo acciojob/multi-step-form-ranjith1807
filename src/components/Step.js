@@ -2,13 +2,12 @@ import React from 'react';
 
 const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
   return (
-    // We dynamically apply step1, step2, or step3 to the outermost wrapper.
-    // This ensures Cypress finds the inputs AND buttons inside the correct step ID.
+    // The id dynamically changes to "step1", "step2", or "step3"
     <div className="step-card" id={`step${currentStep}`}>
       
       {/* Step 1: Customer Details */}
       {currentStep === 1 && (
-        <div className="step-content"> 
+        <div className="step-content">
           <h2>Customer Details</h2>
           <div className="input-group">
             <label htmlFor="first_name">First Name:</label>
@@ -91,21 +90,21 @@ const Step = ({ currentStep, formData, handleChange, nextStep, prevStep }) => {
       {/* Navigation Buttons */}
       <div className="button-group">
         {currentStep > 1 && (
-          // Added id="prev"
+          // ADDED: id="prev"
           <button type="button" id="prev" className="btn-prev" onClick={prevStep}>
             Previous
           </button>
         )}
         
         {currentStep < 3 && (
-           // Added id="next"
+          // ADDED: id="next"
           <button type="button" id="next" className="btn-next" onClick={nextStep}>
             Next
           </button>
         )}
 
         {currentStep === 3 && (
-           // Added id="submit"
+          // ADDED: id="submit"
           <button type="submit" id="submit" className="btn-submit">
             Submit
           </button>
