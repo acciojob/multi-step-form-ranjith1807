@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Step from './Step';
-import '../styles/App.css';
+import '../styles/App.css'; // Make sure this path matches where you saved your CSS
 
-const App = () =>{
+function App() {
   // Manage the current step of the form
   const [currentStep, setCurrentStep] = useState(1);
   
@@ -44,7 +44,6 @@ const App = () =>{
 
   return (
     <div className="App">
-      <h1>Multi-Step Form</h1>
       <form onSubmit={currentStep === 3 ? handleSubmit : (e) => e.preventDefault()}>
         <Step
           step={currentStep}

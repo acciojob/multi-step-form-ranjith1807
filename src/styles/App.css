@@ -6,21 +6,15 @@
   justify-content: center;
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #1a1a1a; /* Matches the dark background of your editor environment */
-}
-
-/* Optional: Title styling */
-.App h1 {
-  color: #ffffff;
-  margin-bottom: 20px;
+  background-color: #1a1a1a;
 }
 
 /* Form Container / Card Styling */
 form {
-  background-color: #e4f3f4; /* Light blue/cyan from screenshot */
+  background-color: #e4f3f4;
   padding: 30px;
   border-radius: 15px;
-  width: 250px; /* Adjust based on your exact needs */
+  width: 250px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
@@ -32,7 +26,7 @@ form {
 /* Step Headings */
 .step-content h2 {
   font-size: 1.1rem;
-  color: #007c91; /* Dark cyan text */
+  color: #007c91;
   margin-top: 0;
   margin-bottom: 20px;
 }
@@ -67,7 +61,7 @@ input:focus {
   border-color: #00bcd4;
 }
 
-/* Error styling (from screenshot 3) */
+/* Error styling */
 .error-text {
   color: #e57373;
   font-size: 0.75rem;
@@ -78,22 +72,22 @@ input:focus {
 /* Navigation Buttons Container */
 .navigation-buttons {
   display: flex;
-  justify-content: center; /* Center buttons if there's only one, otherwise spread them */
+  justify-content: center;
   gap: 15px; 
 }
 
 /* Buttons */
 button {
-  background-color: #b9f6ca; /* Light green from screenshot */
+  background-color: #b9f6ca;
   color: #2e7d32;
   border: none;
   padding: 8px 20px;
-  border-radius: 20px; /* Pill shape */
+  border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;
-  flex: 1; /* Make buttons equal width */
+  flex: 1;
 }
 
 button:hover {

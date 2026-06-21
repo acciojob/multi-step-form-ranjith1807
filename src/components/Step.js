@@ -88,19 +88,19 @@ function Step({ step, formData, handleChange, handleNext, handlePrev }) {
       {/* Dynamic Navigation Buttons */}
       <div className="navigation-buttons" style={{ marginTop: '20px' }}>
         {step > 1 && (
-          <button type="button" onClick={handlePrev} style={{ marginRight: '10px' }}>
+          <button type="button" id="prev" onClick={handlePrev} style={{ marginRight: '10px' }}>
             Previous
           </button>
         )}
         
         {step < 3 && (
-          <button type="button" onClick={handleNext}>
+          <button type="button" id="next" onClick={handleNext}>
             Next
           </button>
         )}
         
         {step === 3 && (
-          <button type="submit">
+          <button type="submit" id="submit">
             Submit
           </button>
         )}
