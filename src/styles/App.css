@@ -1,78 +1,105 @@
-
-body {
-  margin: 0;
+/* Center the application on the screen */
+.App {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
-  background-color: #f8fafc;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1a1a1a; /* Matches the dark background of your editor environment */
 }
 
-.step-card {
-  background-color: #dcf2f5;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  width: 300px;
-  color: #1e3a8a;
-}
-
-h2 {
-  margin-top: 0;
-  font-size: 1.2rem;
+/* Optional: Title styling */
+.App h1 {
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
-.input-group {
+/* Form Container / Card Styling */
+form {
+  background-color: #e4f3f4; /* Light blue/cyan from screenshot */
+  padding: 30px;
+  border-radius: 15px;
+  width: 250px; /* Adjust based on your exact needs */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.step-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Step Headings */
+.step-content h2 {
+  font-size: 1.1rem;
+  color: #007c91; /* Dark cyan text */
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Label and Input wrappers */
+.step-content div {
   margin-bottom: 15px;
 }
 
 label {
   display: block;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  color: #007c91;
   margin-bottom: 5px;
+  font-weight: 600;
 }
 
-input {
+/* Input Fields */
+input[type="text"],
+input[type="number"] {
   width: 100%;
-  padding: 10px;
-  border: none;
+  padding: 8px 10px;
+  border: 1px solid #b2ebf2;
   border-radius: 5px;
   box-sizing: border-box;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
 }
 
 input:focus {
-  outline: 2px solid #a7f3d0;
+  border-color: #00bcd4;
 }
 
-.button-group {
+/* Error styling (from screenshot 3) */
+.error-text {
+  color: #e57373;
+  font-size: 0.75rem;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Navigation Buttons Container */
+.navigation-buttons {
   display: flex;
-  gap: 10px;
-  margin-top: 25px;
+  justify-content: center; /* Center buttons if there's only one, otherwise spread them */
+  gap: 15px; 
 }
 
+/* Buttons */
 button {
-  padding: 10px 20px;
+  background-color: #b9f6ca; /* Light green from screenshot */
+  color: #2e7d32;
   border: none;
-  border-radius: 20px;
-  font-weight: bold;
+  padding: 8px 20px;
+  border-radius: 20px; /* Pill shape */
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  flex: 1; /* Make buttons equal width */
 }
 
 button:hover {
-  opacity: 0.8;
+  background-color: #69f0ae;
 }
 
-.btn-next, .btn-submit {
-  background-color: #a7f3d0;
-  color: #064e3b;
-}
-
-.btn-prev {
-  background-color: #e2e8f0;
-  color: #334155;
+button:active {
+  transform: scale(0.95);
 }

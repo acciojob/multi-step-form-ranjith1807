@@ -6,7 +6,7 @@ function Step({ step, formData, handleChange, handleNext, handlePrev }) {
       
       {/* Step 1: Personal Info */}
       {step === 1 && (
-        <div className="step-content">
+        <div id="step1" className="step-content">
           <h2>Step 1: Personal Information</h2>
           <div>
             <label htmlFor="first_name">First Name:</label>
@@ -33,7 +33,7 @@ function Step({ step, formData, handleChange, handleNext, handlePrev }) {
 
       {/* Step 2: Car Details */}
       {step === 2 && (
-        <div className="step-content">
+        <div id="step2" className="step-content">
           <h2>Step 2: Car Details</h2>
           <div>
             <label htmlFor="model">Car Model:</label>
@@ -60,7 +60,7 @@ function Step({ step, formData, handleChange, handleNext, handlePrev }) {
 
       {/* Step 3: Payment Info */}
       {step === 3 && (
-        <div className="step-content">
+        <div id="step3" className="step-content">
           <h2>Step 3: Payment Information</h2>
           <div>
             <label htmlFor="card_info">Card Information:</label>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Step from './Step';
+import '../styles/App.css';
 
-function App() {
+const App = () =>{
   // Manage the current step of the form
   const [currentStep, setCurrentStep] = useState(1);
   
