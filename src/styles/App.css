@@ -1,99 +1,68 @@
-/* Center the application on the screen */
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #1a1a1a;
-}
-
-/* Form Container / Card Styling */
-form {
-  background-color: #e4f3f4;
-  padding: 30px;
-  border-radius: 15px;
-  width: 250px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-.step-content {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Step Headings */
-.step-content h2 {
-  font-size: 1.1rem;
-  color: #007c91;
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-/* Label and Input wrappers */
-.step-content div {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  font-size: 0.85rem;
-  color: #007c91;
-  margin-bottom: 5px;
-  font-weight: 600;
-}
-
-/* Input Fields */
-input[type="text"],
-input[type="number"] {
-  width: 100%;
-  padding: 8px 10px;
-  border: 1px solid #b2ebf2;
-  border-radius: 5px;
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  font-size: 0.9rem;
-  outline: none;
-  transition: border-color 0.2s;
 }
 
-input:focus {
-  border-color: #00bcd4;
+body {
+  background: #f7f7f7;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Error styling */
-.error-text {
-  color: #e57373;
-  font-size: 0.75rem;
-  margin-top: 5px;
-  display: block;
-}
-
-/* Navigation Buttons Container */
-.navigation-buttons {
+.container {
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  gap: 15px; 
+  align-items: center;
 }
 
-/* Buttons */
-button {
-  background-color: #b9f6ca;
-  color: #2e7d32;
-  border: none;
-  padding: 8px 20px;
+.card {
+  width: 320px;
+  background: #dff7ff;
+  padding: 25px;
   border-radius: 20px;
-  font-size: 0.85rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card h2 {
+  color: #2f5d7c;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.card label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 6px;
   font-weight: 600;
+  color: #4b6b7a;
+}
+
+.card input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cdd6db;
+  border-radius: 4px;
+  outline: none;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-group button {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  background: #8df59c;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  flex: 1;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-button:hover {
-  background-color: #69f0ae;
-}
-
-button:active {
-  transform: scale(0.95);
+.btn-group button:hover {
+  transform: scale(1.05);
 }

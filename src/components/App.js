@@ -1,58 +1,106 @@
-import React, { useState } from 'react';
-import Step from './Step';
-import '../styles/App.css'; // Make sure this path matches where you saved your CSS
+import React, { useState } from "react";
+import "../styles/App.css";
 
 function App() {
-  // Manage the current step of the form
-  const [currentStep, setCurrentStep] = useState(1);
-  
-  // Manage all form data in one centralized state
+  const [step, setStep] = useState(1);
+
   const [formData, setFormData] = useState({
-    first_name: '',
-    last_name: '',
-    model: '',
-    car_price: '',
-    card_info: '',
-    expiry_date: ''
+    first_name: "",
+    last_name: "",
+    model: "",
+    car_price: "",
+    card_info: "",
+    expiry_date: "",
   });
 
-  // Navigate to the next step
-  const handleNext = () => {
-    setCurrentStep((prev) => prev + 1);
-  };
-
-  // Navigate to the previous step
-  const handlePrev = () => {
-    setCurrentStep((prev) => prev - 1);
-  };
-
-  // Handle input changes by updating the formData state dynamically based on the input's id
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [id]: value
-    }));
-  };
-
-  // Handle final form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form Submitted successfully:', formData);
-    alert('Form submitted! Check the console for data.');
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
   };
 
   return (
-    <div className="App">
-      <form onSubmit={currentStep === 3 ? handleSubmit : (e) => e.preventDefault()}>
-        <Step
-          step={currentStep}
-          formData={formData}
-          handleChange={handleChange}
-          handleNext={handleNext}
-          handlePrev={handlePrev}
-        />
-      </form>
+    <div className="container">
+      {step === 1 && (
+        <div id="step1" className="card">
+          <h2>Personal Details</h2>
+
+          <label>First Name:</label>
+          <input
+            id="first_name"
+            value={formData.first_name}
+            onChange={handleChange}
+          />
+
+          <label>Last Name:</label>
+          <input
+            id="last_name"
+            value={formData.last_name}
+            onChange={handleChange}
+          />
+
+          <div className="btn-group">
+            <button onClick={() => setStep(2)}>Next</button>
+          </div>
+        </div>
+      )}
+
+      {step === 2 && (
+        <div id="step2" className="card">
+          <h2>Car Details</h2>
+
+          <label>Model:</label>
+          <input
+            id="model"
+            value={formData.model}
+            onChange={handleChange}
+          />
+
+          <label>Car Price:</label>
+          <input
+            id="car_price"
+            value={formData.car_price}
+            onChange={handleChange}
+          />
+
+          <div className="btn-group">
+            <button onClick={() => setStep(1)}>Previous</button>
+            <button onClick={() => setStep(3)}>Next</button>
+          </div>
+        </div>
+      )}
+
+      {step === 3 && (
+        <div id="step3" className="card">
+          <h2>Payment Details</h2>
+
+          <label>Card Information:</label>
+          <input
+            id="card_info"
+            value={formData.card_info}
+            onChange={handleChange}
+          />
+
+          <label>Expiry Date:</label>
+          <input
+            id="expiry_date"
+            value={formData.expiry_date}
+            onChange={handleChange}
+          />
+
+          <div className="btn-group">
+            <button onClick={() => setStep(2)}>Previous</button>
+            <button
+              onClick={() => {
+                alert("Form Submitted");
+              }}
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
