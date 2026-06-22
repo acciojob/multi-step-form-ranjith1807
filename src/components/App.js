@@ -7,16 +7,20 @@ function App() {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
+    brand: "",  // <-- Added brand here
     model: "",
-    car_price: "",
     card_info: "",
     expiry_date: "",
   });
 
   const handleChange = (e) => {
+    // 1. Extract the values immediately while the event still exists
+    const { id, value } = e.target; 
+
+    // 2. Use those extracted variables inside your asynchronous state updater
     setFormData((prevData) => ({
       ...prevData,
-      [e.target.id]: e.target.value,
+      [id]: value, 
     }));
   };
 

@@ -8,7 +8,7 @@ function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
     <>
       {step === 1 && (
         <div id="step1" className="card">
-          <h2>Personal Details</h2>
+          <h2>Customer Details</h2>
           
           <label htmlFor="first_name">First Name:</label>
           <input type="text" id="first_name" value={formData.first_name} onChange={handleChange} />
@@ -17,7 +17,6 @@ function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
           <input type="text" id="last_name" value={formData.last_name} onChange={handleChange} />
 
           <div className="btn-group">
-            {/* Added id="next" for Cypress */}
             <button id="next" type="button" onClick={nextStep}>Next</button>
           </div>
         </div>
@@ -27,14 +26,15 @@ function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
         <div id="step2" className="card">
           <h2>Car Details</h2>
           
+          {/* Brand Input */}
+          <label htmlFor="brand">Brand:</label>
+          <input type="text" id="brand" value={formData.brand} onChange={handleChange} />
+          
+          {/* Model Input */}
           <label htmlFor="model">Model:</label>
           <input type="text" id="model" value={formData.model} onChange={handleChange} />
 
-          <label htmlFor="car_price">Car Price:</label>
-          <input type="text" id="car_price" value={formData.car_price} onChange={handleChange} />
-
           <div className="btn-group">
-            {/* Added ids for Cypress */}
             <button id="prev" type="button" onClick={prevStep}>Previous</button>
             <button id="next" type="button" onClick={nextStep}>Next</button>
           </div>
