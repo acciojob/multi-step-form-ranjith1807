@@ -14,13 +14,12 @@ function App() {
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setFormData((prevData) => ({
+      ...prevData,
       [e.target.id]: e.target.value,
-    });
+    }));
   };
 
-  // Explicit navigation functions
   const nextStep = () => setStep((prev) => prev + 1);
   const prevStep = () => setStep((prev) => prev - 1);
   
@@ -31,7 +30,6 @@ function App() {
 
   return (
     <div className="container">
-      {/* Passing all required props to the Step component */}
       <Step
         step={step}
         formData={formData}
