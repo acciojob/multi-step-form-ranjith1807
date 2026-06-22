@@ -1,6 +1,7 @@
 import React from "react";
 
 function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }) {
+  // Validation checks for Step 3
   const isCardInvalid = formData.card_info.length > 0 && !/^\d{12}$/.test(formData.card_info);
   const isExpiryInvalid = formData.expiry_date.length > 0 && !/^(0[1-9]|1[0-2])\/\d{2}$/.test(formData.expiry_date);
 
@@ -10,13 +11,22 @@ function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
       <div id="step1" className="card">
         <h2>Personal Details</h2>
         <label htmlFor="first_name">First Name:</label>
-        <input type="text" id="first_name" value={formData.first_name} onChange={handleChange} />
+        <input
+          type="text"
+          id="first_name"
+          value={formData.first_name}
+          onChange={handleChange}
+        />
 
         <label htmlFor="last_name">Last Name:</label>
-        <input type="text" id="last_name" value={formData.last_name} onChange={handleChange} />
+        <input
+          type="text"
+          id="last_name"
+          value={formData.last_name}
+          onChange={handleChange}
+        />
 
         <div className="btn-group">
-          {/* Added type="button" here */}
           <button type="button" onClick={nextStep}>Next</button>
         </div>
       </div>
@@ -29,13 +39,22 @@ function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
       <div id="step2" className="card">
         <h2>Car Details</h2>
         <label htmlFor="model">Model:</label>
-        <input type="text" id="model" value={formData.model} onChange={handleChange} />
+        <input
+          type="text"
+          id="model"
+          value={formData.model}
+          onChange={handleChange}
+        />
 
         <label htmlFor="car_price">Car Price:</label>
-        <input type="text" id="car_price" value={formData.car_price} onChange={handleChange} />
+        <input
+          type="text"
+          id="car_price"
+          value={formData.car_price}
+          onChange={handleChange}
+        />
 
         <div className="btn-group">
-          {/* Added type="button" here */}
           <button type="button" onClick={prevStep}>Previous</button>
           <button type="button" onClick={nextStep}>Next</button>
         </div>
@@ -48,6 +67,7 @@ function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
     return (
       <div id="step3" className="card">
         <h2>Payment Details</h2>
+        
         <label htmlFor="card_info">Credit Card Number:</label>
         <input
           type="text"
@@ -77,10 +97,7 @@ function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
         )}
 
         <div className="btn-group">
-          {/* Added type="button" here */}
           <button type="button" onClick={prevStep}>Previous</button>
-          
-          {/* Left the Submit button to act normally, or you can make it type="submit" */}
           <button 
             type="submit" 
             onClick={handleSubmit} 
@@ -97,3 +114,7 @@ function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
 }
 
 export default Step;
+
+// git add .
+// git commit -m 'dfsfs'
+// git push origin master

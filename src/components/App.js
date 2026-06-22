@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Step from "./Step";
-import "../styles/App.css"; // Adjust path if necessary
+import "../styles/App.css";
 
 function App() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -13,30 +13,27 @@ function App() {
     expiry_date: "",
   });
 
-  // Handle input changes dynamically based on the input's ID
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [id]: value,
-    }));
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
   };
 
-  // Navigation handlers
-  const nextStep = () => setCurrentStep((prev) => prev + 1);
-  const prevStep = () => setCurrentStep((prev) => prev - 1);
+  // Explicit navigation functions
+  const nextStep = () => setStep((prev) => prev + 1);
+  const prevStep = () => setStep((prev) => prev - 1);
   
-  // Submit handler
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Form Submitted!");
-    // You can add API submission logic here later
+    alert("Form Submitted");
   };
 
   return (
     <div className="container">
+      {/* Passing all required props to the Step component */}
       <Step
-        step={currentStep}
+        step={step}
         formData={formData}
         handleChange={handleChange}
         nextStep={nextStep}
