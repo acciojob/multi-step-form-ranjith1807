@@ -1,106 +1,107 @@
-import React from 'react';
+import React from "react";
 
-function Step({ step, formData, handleChange, handleNext, handlePrev }) {
+function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }) {
+  // Validation checks for Step 3
+  const isCardInvalid = formData.card_info.length > 0 && !/^\d{12}$/.test(formData.card_info);
+  const isExpiryInvalid = formData.expiry_date.length > 0 && !/^(0[1-9]|1[0-2])\/\d{2}$/.test(formData.expiry_date);
+
   return (
-    <div className="step-container">
+    <div id={`step${step}`} className="card">
       
-      {/* Step 1: Personal Info */}
+      {/* --- STEP 1 --- */}
       {step === 1 && (
-        <div id="step1" className="step-content">
-          <h2>Step 1: Personal Information</h2>
-          <div>
-            <label htmlFor="first_name">First Name:</label>
-            <input
-              type="text"
-              id="first_name"
-              value={formData.first_name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="last_name">Last Name:</label>
-            <input
-              type="text"
-              id="last_name"
-              value={formData.last_name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-        </div>
+        <>
+          <h2>Personal Details</h2>
+          <label htmlFor="first_name">First Name:</label>
+          <input
+            type="text"
+            id="first_name"
+            value={formData.first_name}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="last_name">Last Name:</label>
+          <input
+            type="text"
+            id="last_name"
+            value={formData.last_name}
+            onChange={handleChange}
+          />
+        </>
       )}
 
-      {/* Step 2: Car Details */}
+      {/* --- STEP 2 --- */}
       {step === 2 && (
-        <div id="step2" className="step-content">
-          <h2>Step 2: Car Details</h2>
-          <div>
-            <label htmlFor="model">Car Model:</label>
-            <input
-              type="text"
-              id="model"
-              value={formData.model}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="car_price">Car Price:</label>
-            <input
-              type="number"
-              id="car_price"
-              value={formData.car_price}
-              onChange={handleChange}
-              required
-            />
-          </div>
-        </div>
+        <>
+          <h2>Car Details</h2>
+          <label htmlFor="model">Model:</label>
+          <input
+            type="text"
+            id="model"
+            value={formData.model}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="car_price">Car Price:</label>
+          <input
+            type="text"
+            id="car_price"
+            value={formData.car_price}
+            onChange={handleChange}
+          />
+        </>
       )}
 
-      {/* Step 3: Payment Info */}
+      {/* --- STEP 3 --- */}
       {step === 3 && (
-        <div id="step3" className="step-content">
-          <h2>Step 3: Payment Information</h2>
-          <div>
-            <label htmlFor="card_info">Card Information:</label>
-            <input
-              type="text"
-              id="card_info"
-              value={formData.card_info}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="expiry_date">Expiry Date:</label>
-            <input
-              type="text"
-              id="expiry_date"
-              value={formData.expiry_date}
-              onChange={handleChange}
-              required
-            />
-          </div>
-        </div>
+        <>
+          <h2>Payment Details</h2>
+          
+          <label htmlFor="card_info">Credit Card Number:</label>
+          <input
+            type="text"
+            id="card_info"
+            value={formData.card_info}
+            onChange={handleChange}
+            style={{ borderColor: isCardInvalid ? 'red' : '' }}
+          />
+          {isCardInvalid && (
+            <p style={{ color: "red", fontSize: "0.85rem", marginTop: "-10px", marginBottom: "10px" }}>
+              Credit card number must be exactly 12 digits long.
+            </p>
+          )}
+
+          <label htmlFor="expiry_date">Expiration Date:</label>
+          <input
+            type="text"
+            id="expiry_date"
+            value={formData.expiry_date}
+            onChange={handleChange}
+            style={{ borderColor: isExpiryInvalid ? 'red' : '' }}
+          />
+          {isExpiryInvalid && (
+            <p style={{ color: "red", fontSize: "0.85rem", marginTop: "-10px", marginBottom: "10px" }}>
+              Expiration date must be in the format MM/YY.
+            </p>
+          )}
+        </>
       )}
 
-      {/* Dynamic Navigation Buttons */}
-      <div className="navigation-buttons" style={{ marginTop: '20px' }}>
+      {/* --- NAVIGATION BUTTONS --- */}
+      <div className="btn-group">
         {step > 1 && (
-          <button type="button" id="prev" onClick={handlePrev} style={{ marginRight: '10px' }}>
-            Previous
-          </button>
+          <button onClick={prevStep}>Previous</button>
         )}
         
         {step < 3 && (
-          <button type="button" id="next" onClick={handleNext}>
-            Next
-          </button>
+          <button onClick={nextStep}>Next</button>
         )}
         
         {step === 3 && (
-          <button type="submit" id="submit">
+          <button 
+            onClick={handleSubmit} 
+            disabled={isCardInvalid || isExpiryInvalid || formData.card_info === "" || formData.expiry_date === ""}
+          >
             Submit
           </button>
         )}
