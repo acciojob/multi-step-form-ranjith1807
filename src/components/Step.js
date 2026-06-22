@@ -31,9 +31,6 @@ function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }
         <label htmlFor="model">Model:</label>
         <input type="text" id="model" value={formData.model} onChange={handleChange} />
 
-        <label htmlFor="car_price">Car Price:</label>
-        <input type="text" id="car_price" value={formData.car_price} onChange={handleChange} />
-
         <div className="btn-group">
           <button id="prev" type="button" onClick={prevStep}>Previous</button>
           <button id="next" type="button" onClick={nextStep}>Next</button>

@@ -7,15 +7,13 @@ function App() {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
-    model: "",
     brand: "",
-    car_price: "",
+    model: "",
     card_info: "",
     expiry_date: "",
   });
 
   const handleChange = (e) => {
-    // CRITICAL FIX: Extract values immediately to prevent the React crash
     const targetId = e.target.id;
     const targetValue = e.target.value;
 
