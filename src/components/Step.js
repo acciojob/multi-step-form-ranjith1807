@@ -3,7 +3,7 @@ import React from "react";
 function Step({ step, formData, handleChange, nextStep, prevStep, handleSubmit }) {
   if (step === 1) {
     return (
-      <div id="step1">
+      <div id="step">
         <input id="first_name" value={formData.first_name} onChange={handleChange} />
         <input id="last_name" value={formData.last_name} onChange={handleChange} />
         <button onClick={nextStep}>Next</button>
