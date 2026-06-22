@@ -7,25 +7,31 @@ function App() {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
-    brand: "",  // <-- Added brand here
     model: "",
+    brand: "",
+    car_price: "",
     card_info: "",
     expiry_date: "",
   });
 
   const handleChange = (e) => {
-    // 1. Extract the values immediately while the event still exists
-    const { id, value } = e.target; 
+    // CRITICAL FIX: Extract values immediately to prevent the React crash
+    const targetId = e.target.id;
+    const targetValue = e.target.value;
 
-    // 2. Use those extracted variables inside your asynchronous state updater
     setFormData((prevData) => ({
       ...prevData,
-      [id]: value, 
+      [targetId]: targetValue,
     }));
   };
 
-  const nextStep = () => setStep((prev) => prev + 1);
-  const prevStep = () => setStep((prev) => prev - 1);
+  const nextStep = () => {
+    setStep((prev) => prev + 1);
+  };
+
+  const prevStep = () => {
+    setStep((prev) => prev - 1);
+  };
   
   const handleSubmit = (e) => {
     e.preventDefault();
