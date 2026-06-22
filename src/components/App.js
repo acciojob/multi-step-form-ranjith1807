@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Step from "./Step";
 import "../styles/App.css";
 
+
 function App() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -14,37 +15,25 @@ function App() {
   });
 
   const handleChange = (e) => {
-    const targetId = e.target.id;
-    const targetValue = e.target.value;
-
-    setFormData((prevData) => ({
-      ...prevData,
-      [targetId]: targetValue,
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
     }));
   };
 
-  const nextStep = () => {
-    setStep((prev) => prev + 1);
-  };
-
-  const prevStep = () => {
-    setStep((prev) => prev - 1);
-  };
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Form Submitted");
-  };
-
   return (
-    <div className="container">
+    <div className="App">
       <Step
         step={step}
         formData={formData}
         handleChange={handleChange}
-        nextStep={nextStep}
-        prevStep={prevStep}
-        handleSubmit={handleSubmit}
+        nextStep={() => setStep(step + 1)}
+        prevStep={() => setStep(step - 1)}
+        handleSubmit={(e) => {
+          e.preventDefault();
+          alert("Form Submitted");
+        }}
       />
     </div>
   );
