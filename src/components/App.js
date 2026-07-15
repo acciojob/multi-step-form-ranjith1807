@@ -39,17 +39,17 @@ function App() {
   const handleSubmit = (e) => {
     if (e) e.preventDefault();
     
-    // Final check before submission
     const isCardValid = /^\d{12}$/.test(formData.card_info);
     const isExpiryValid = /^\d{2}\/\d{2}$/.test(formData.expiry_date);
 
     if (isCardValid && isExpiryValid) {
-      console.log('Form Submitted Successfully:', formData);
+      console.log('Form Submitted:', formData);
     }
   };
 
   return (
     <div className="App">
+      {/* Notice how we pass step={currentStep} here */}
       <Step
         step={currentStep}
         formData={formData}
