@@ -8,12 +8,14 @@ function Step({
   handlePrevious,
   handleSubmit
 }) {
-  // Real-time validation checks for Step 3
+  // Regex validation for Step 3
   const isCardInvalid = formData.card_info !== '' && !/^\d{12}$/.test(formData.card_info);
   const isExpiryInvalid = formData.expiry_date !== '' && !/^\d{2}\/\d{2}$/.test(formData.expiry_date);
 
   return (
+    /* The dynamic ID below is what Cypress is looking for: #step1, #step2, #step3 */
     <div id={`step${step}`} className="step-card">
+      
       {step === 1 && (
         <div className="step-content">
           <h2>Customer Details</h2>
@@ -42,7 +44,7 @@ function Step({
         <div className="step-content">
           <h2>Car Details</h2>
           <div className="form-group">
-            <label htmlFor="model">Brand / Model:</label>
+            <label htmlFor="model">Brand:</label>
             <input
               type="text"
               id="model"
@@ -51,7 +53,7 @@ function Step({
             />
           </div>
           <div className="form-group">
-            <label htmlFor="car_price">Car Price:</label>
+            <label htmlFor="car_price">Model:</label>
             <input
               type="text"
               id="car_price"

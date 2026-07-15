@@ -4,6 +4,7 @@ import './../styles/App.css';
 import React, { useState } from 'react';
 import Step from './Step';
 
+
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -38,13 +39,12 @@ function App() {
   const handleSubmit = (e) => {
     if (e) e.preventDefault();
     
-    // Validate final step before submission
+    // Final check before submission
     const isCardValid = /^\d{12}$/.test(formData.card_info);
     const isExpiryValid = /^\d{2}\/\d{2}$/.test(formData.expiry_date);
 
     if (isCardValid && isExpiryValid) {
-      console.log('Form Submitted:', formData);
-      alert('Form submitted successfully!');
+      console.log('Form Submitted Successfully:', formData);
     }
   };
 
