@@ -1,65 +1,21 @@
 
-import './../styles/App.css';
+import React, { useState } from "react";
+//import './../styles/App.css';
+//import Step1 from "./Step1";
+import Steps from "./Steps";
+// import Step2 from "./Step2";
+// import Step3 from "./Step3";
 
-import React, { useState } from 'react';
-import Step from './Step';
-
-
-function App() {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({
-    first_name: '',
-    last_name: '',
-    model: '',
-    car_price: '',
-    card_info: '',
-    expiry_date: ''
-  });
-
-  const handleNext = () => {
-    if (currentStep < 3) {
-      setCurrentStep((prevStep) => prevStep + 1);
-    }
-  };
-
-  const handlePrevious = () => {
-    if (currentStep > 1) {
-      setCurrentStep((prevStep) => prevStep - 1);
-    }
-  };
-
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [id]: value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    if (e) e.preventDefault();
-    
-    const isCardValid = /^\d{12}$/.test(formData.card_info);
-    const isExpiryValid = /^\d{2}\/\d{2}$/.test(formData.expiry_date);
-
-    if (isCardValid && isExpiryValid) {
-      console.log('Form Submitted:', formData);
-    }
-  };
-
+//import Steps from "./Step1";
+const App = () => {
+//et [step,setStep]=useState(1)
   return (
-    <div className="App">
-      {/* Notice how we pass step={currentStep} here */}
-      <Step
-        step={currentStep}
-        formData={formData}
-        handleChange={handleChange}
-        handleNext={handleNext}
-        handlePrevious={handlePrevious}
-        handleSubmit={handleSubmit}
-      />
+    <div>
+      <Steps/> 
+       {/* /* {step==2 && <Step2 step={step} setStep={setStep}/>}
+     { step==3 && <Step3 step={step} setStep={setStep}/>} */ }
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
